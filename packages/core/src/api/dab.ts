@@ -1,7 +1,7 @@
 // DAB is a canister service which acts as a directory for NFTs. Saga has it's own DAB service, which we query for a list of all available tarot NFTs.
 
 import { Metadata } from '../idl/tarot-dab.did.d';
-import { CacheConf } from './.common';
+import { CacheConf } from './_common';
 import { dab } from './actors';
 
 ////////////

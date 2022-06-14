@@ -3,13 +3,13 @@ import {
     fetchEventsCacheConf,
     fetchSpotsCacheConf,
     fetchSupplyCacheConf,
-} from 'packages/core/api/minting';
+} from '@opentarot/core';
 import {
     MintingEvent,
     fetchSupply,
     fetchSpots,
     fetchEvent,
-} from 'packages/core/api/minting';
+} from '@opentarot/core';
 import { useQuery, useQueries } from 'react-query';
 
 /**

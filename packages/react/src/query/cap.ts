@@ -1,10 +1,10 @@
 import {
-    fetchEvents,
-    fetchEventsCacheConf,
+    fetchProvenance,
+    fetchProvenanceCacheConf,
     fetchRoot,
     fetchRootCacheConf,
     Transaction,
-} from 'packages/core/api/cap';
+} from '@opentarot/core';
 import { useQueries, useQuery } from 'react-query';
 import { useDirectory } from './dab';
 
@@ -24,10 +24,10 @@ export function useProvenance(canister: string) {
     // Retrieve provenance events for this NFT canister.
     const query = useQuery(
         `provenance-events-${canister}`,
-        () => fetchEvents(root as string),
+        () => fetchProvenance(root as string),
         {
             enabled: !!root,
-            ...fetchEventsCacheConf,
+            ...fetchProvenanceCacheConf,
         }
     );
 
@@ -60,9 +60,9 @@ export function useAllProvenance() {
     const query = useQueries(
         roots.map(c => ({
             queryKey: `provenance-events-${c.data}`,
-            queryFn: () => fetchEvents(c.data as string),
+            queryFn: () => fetchProvenance(c.data as string),
             enabled: !!roots,
-            ...fetchEventsCacheConf,
+            ...fetchProvenanceCacheConf,
         }))
     );
 

@@ -1,4 +1,4 @@
-import { rarity } from './rarity';
+import { rarity, TraitType } from './rarity';
 
 test('Finds rarity for all known traits', () => {
     for (const trait of traits) {
@@ -15,7 +15,7 @@ test('Finds correct rarity for a bright ink', () => {
 });
 
 // A list of all known traits.
-const traits: [string, string][] = [
+const traits: [TraitType, string][] = [
     ['stock', 'black'],
     ['stock', 'white'],
     ['stock', 'priestess'],

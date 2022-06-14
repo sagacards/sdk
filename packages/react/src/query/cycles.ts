@@ -2,7 +2,7 @@ import {
     conversionCacheConf,
     fetchCyclesToXdr,
     fetchXdrToUsd,
-} from 'packages/core/api/cycles';
+} from '@opentarot/core';
 import { useQuery } from 'react-query';
 
 /**

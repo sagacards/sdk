@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import { ActorSubclass } from '@dfinity/agent';
 import { IDL } from '@dfinity/candid';
 

@@ -1,4 +1,4 @@
-import { CacheConf } from './.common';
+import { CacheConf } from './_common';
 import { ic, legend } from './actors';
 import { rarity, Rarity } from './rarity';
 

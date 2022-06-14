@@ -1,4 +1,4 @@
-import { getAll, getAllCacheConf } from 'packages/core/api/dab';
+import { getAll, getAllCacheConf } from '@opentarot/core';
 import { useQuery } from 'react-query';
 
 /**

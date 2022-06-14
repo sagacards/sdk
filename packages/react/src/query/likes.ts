@@ -1,10 +1,5 @@
 import { Principal } from '@dfinity/principal';
-import { encodeTokenIdentifier } from 'ictool';
-import {
-    fetchLikeCount,
-    fetchLikes,
-    likesCacheConf,
-} from 'packages/core/api/likes';
+import { fetchLikeCount, fetchLikes, likesCacheConf } from '@opentarot/core';
 import { useQuery } from 'react-query';
 
 /**

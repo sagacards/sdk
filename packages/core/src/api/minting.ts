@@ -9,7 +9,7 @@ import {
     mapDate,
     mapToken,
     unpackResult,
-} from './.common';
+} from './_common';
 import { Data, Bazaar } from '../idl/bazaar.did.d';
 import { ActorSubclass } from '@dfinity/agent';
 import { bazaar, legend } from './actors';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, useQueries, useMutation } from 'react-query';
 import { decodeTokenIdentifier } from 'ictool';
-import { ICP8s } from 'packages/core/api/.common';
+import { ICP8s } from '@opentarot/core';
 import {
     Listing,
     queryListings,
@@ -9,7 +9,7 @@ import {
     queryListingsCacheConfFast,
     updateListing,
     updateLock,
-} from 'packages/core/api/listings';
+} from '@opentarot/core';
 import { useDirectory } from './dab';
 
 /**

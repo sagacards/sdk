@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { decodeTokenIdentifier, encodeTokenIdentifier } from 'ictool';
 import { ExtListing, TokenIndex } from '../idl/legends.did.d';
-import { ICP8s, unpackResult, mapDate, CacheConf } from './.common';
+import { ICP8s, unpackResult, mapDate, CacheConf } from './_common';
 import { legend } from './actors';
 
 ////////////

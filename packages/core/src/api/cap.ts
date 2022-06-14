@@ -10,7 +10,7 @@ import {
     prettifyCapTransactions,
 } from '@psychedelic/cap-js';
 import { decodeTokenIdentifier } from 'ictool';
-import { asPrincipal, CacheConf } from './.common';
+import { asPrincipal, CacheConf } from './_common';
 import { host } from './actors';
 import { Price } from './listings';
 
@@ -163,6 +163,7 @@ export async function fetchRoot(canisterId: string): Promise<string> {
     const root = await (
         await Router
     ).get_token_contract_root_bucket({
+        // @ts-ignore: principal lib mismatch
         tokenId: asPrincipal(canisterId),
         witness: false,
     });
@@ -176,7 +177,9 @@ export const fetchRootCacheConf: CacheConf = {
 /** Get provenance events from a given CAP canister. Returns the first two pages.
  * @param canisterId canister id as string
  */
-export async function fetchEvents(canisterId: string): Promise<Transaction[]> {
+export async function fetchProvenance(
+    canisterId: string
+): Promise<Transaction[]> {
     // We grab the two most recent pages from the history canister.
     const root = await CapRoot.init({ canisterId, host });
     const response = await Promise.all([
@@ -187,7 +190,7 @@ export async function fetchEvents(canisterId: string): Promise<Transaction[]> {
     // Map and return the data for use in this app.
     return mapCAP(response.reduce((agg, i) => [...agg, ...i.data], []));
 }
-export const fetchEventsCacheConf: CacheConf = {
+export const fetchProvenanceCacheConf: CacheConf = {
     cacheTime: 60_000,
     staleTime: 60_000,
     refetchInterval: 60_000,

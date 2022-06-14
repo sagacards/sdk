@@ -6,8 +6,7 @@ import {
     fetchManifest,
     fetchManifestCacheConf,
     mapManifestToTraits,
-} from 'packages/core/api/legends';
-import { rarity, Rarity } from 'packages/core/api/rarity';
+} from '@opentarot/core';
 
 /**
  * Query manifest for a specific token.

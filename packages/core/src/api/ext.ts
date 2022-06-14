@@ -2,7 +2,7 @@
 
 import { decodeTokenIdentifier } from 'ictool';
 import { ext } from './actors';
-import { CacheConf, unpackResult } from './.common';
+import { CacheConf, unpackResult } from './_common';
 
 ////////////
 // Types //
@@ -16,7 +16,7 @@ export interface SomeType {}
 ////////////
 
 /** Stats for an EXT standard NFT canister. */
-interface Stats {
+export interface Stats {
     saleVolume: number;
     largestSale: number;
     smallestSale: number;

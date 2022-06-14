@@ -22,11 +22,22 @@ import type { Likes } from '../idl/likes.did.d';
 // Config //
 ///////////
 
+// TODO: Configurable
+const conf = {
+    IC_PROTOCOL: 'https',
+    IC_HOST: 'https://ic0.app',
+    BAZAAR_CANISTER_ID: 'h7wcp-ayaaa-aaaam-qadqq-cai',
+    NNS_CANISTER_ID: 'ryjl3-tyaaa-aaaaa-aaaba-cai',
+    LIKES_CANISTER_ID: 'xnx6l-pyaaa-aaaaj-qasxa-cai',
+    DAB_CANISTER_ID: 'g7fsx-wyaaa-aaaaj-qawcq-cai',
+    CYCLES_CANISTER_ID: 'rkp4c-7iaaa-aaaaa-aaaca-cai',
+};
+
 const canisters: { [key: string]: string } = {
-    bazaar: import.meta.env.BAZAAR_CANISTER_ID as string,
-    likes: import.meta.env.LIKES_CANISTER_ID as string,
-    cycles: import.meta.env.CYCLES_CANISTER_ID as string,
-    dab: import.meta.env.DAB_CANISTER_ID as string,
+    bazaar: conf.BAZAAR_CANISTER_ID as string,
+    likes: conf.LIKES_CANISTER_ID as string,
+    cycles: conf.CYCLES_CANISTER_ID as string,
+    dab: conf.DAB_CANISTER_ID as string,
 };
 
 for (const k in canisters) {
@@ -43,9 +54,8 @@ export const whitelist = async (): Promise<string[]> => [
 
 /** Configuration for the ic network, defaults to mainnet. */
 export const ic = {
-    protocol: (import.meta.env.IC_PROTOCOL as string) || 'https',
-    host: (import.meta.env.IC_HOST as string) || 'ic0.app',
-    isLocal: import.meta.env.IS_LOCAL === 'true',
+    protocol: (conf.IC_PROTOCOL as string) || 'https',
+    host: (conf.IC_HOST as string) || 'ic0.app',
 };
 
 /** Complete boundary node url. */
@@ -73,10 +83,6 @@ export function invalidateIdentity() {
 
 /** Agent shared across all actors. */
 export const agent = new Agent.HttpAgent({ host });
-
-if (ic.isLocal) {
-    agent.fetchRootKey();
-}
 
 /////////////
 // Actors //
@@ -225,3 +231,6 @@ export function respawnActorsStandard() {
         actors[canisterId] = actor(canisterId, actors[canisterId].idl);
     }
 }
+
+export { BazaarIDL, CyclesIDL, DabIDL, ExtIDL, LikesIDL, LegendsIDL, NnsIDL };
+export type { Bazaar, Cycles, EXT, TarotDAB, Ledger, LegendsNFT, Likes };

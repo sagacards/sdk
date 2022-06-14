@@ -1,5 +1,4 @@
-import { ext } from 'packages/core/api/actors';
-import { TarotNftCollection } from 'packages/core/api/dab';
+import { TarotNftCollection } from '@opentarot/core';
 import {
     fetchOwner,
     fetchOwnerCacheConf,
@@ -7,8 +6,7 @@ import {
     fetchRegistryCacheConf,
     fetchStats,
     fetchStatsCacheConf,
-    mapStats,
-} from 'packages/core/api/ext';
+} from '@opentarot/core';
 import React from 'react';
 import { useQueries, useQuery } from 'react-query';
 import { useDirectory } from './dab';

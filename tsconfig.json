@@ -1,22 +1,15 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
-        "useDefineForClassFields": true,
-        "lib": ["DOM", "DOM.Iterable", "ESNext"],
-        "allowJs": false,
-        "skipLibCheck": true,
-        "esModuleInterop": false,
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "module": "ESNext",
-        "moduleResolution": "Node",
+        "target": "es2020",
+        "lib": ["DOM", "DOM.Iterable", "ESNext", "ES5", "ES2017", "ES2015"],
+        "esModuleInterop": true,
+        "module": "commonjs",
         "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "jsx": "react-jsx",
         "baseUrl": ".",
-        "types": ["jest"]
+        "types": ["jest", "node"],
+        "skipLibCheck": true
     },
-    "include": ["packages", "env.d.ts"]
+    "exclude": ["**/src/**/*.test.ts"],
+    "include": ["env.d.ts"],
+    "references": [{ "path": "packages/core" }, { "path": "packages/react" }]
 }

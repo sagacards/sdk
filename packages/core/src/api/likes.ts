@@ -2,7 +2,7 @@
 
 import { Principal } from '@dfinity/principal';
 import { TokenIndex } from '../idl/likes.did.d';
-import { CacheConf } from './.common';
+import { CacheConf } from './_common';
 import { likes } from './actors';
 
 ////////////

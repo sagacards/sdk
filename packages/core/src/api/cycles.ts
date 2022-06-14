@@ -1,7 +1,7 @@
 // Querying the cycles minting canister.
 
 import { IcpXdrConversionResponse } from '../idl/cycles.did.d';
-import { CacheConf } from './.common';
+import { CacheConf } from './_common';
 import { cycles } from './actors';
 
 //////////////
