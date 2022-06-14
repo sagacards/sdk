@@ -1,0 +1,34 @@
+{
+    "name": "@opentarot/react",
+    "version": "1.0.0",
+    "description": "Prebuilt queries for react apps covering the open tarot ecosystem.",
+    "main": "build/index.js",
+    "scripts": {
+        "test": "npx jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sagacards/opentarot-sdk.git"
+    },
+    "keywords": [
+        "tarot",
+        "nft",
+        "sdk",
+        "internet",
+        "computer",
+        "blockchain"
+    ],
+    "author": "jorgenbuilder",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sagacards/opentarot-sdk/issues"
+    },
+    "homepage": "https://github.com/sagacards/opentarot-sdk#readme",
+    "dependencies": {
+        "react": "^18.1.0",
+        "react-query": "^3.39.1"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.12"
+    }
+}

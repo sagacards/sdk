@@ -1,0 +1,27 @@
+{
+    "name": "@opentarot/core",
+    "version": "1.0.0",
+    "description": "A typescript interface for the open tarot ecosystem.",
+    "main": "build/index.js",
+    "scripts": {
+        "test": "npx jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sagacards/opentarot-sdk.git"
+    },
+    "keywords": [
+        "tarot",
+        "nft",
+        "sdk",
+        "internet",
+        "computer",
+        "blockchain"
+    ],
+    "author": "jorgenbuilder",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sagacards/opentarot-sdk/issues"
+    },
+    "homepage": "https://github.com/sagacards/opentarot-sdk#readme"
+}
