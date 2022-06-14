@@ -1,6 +1,6 @@
 {
     "name": "@opentarot/core",
-    "private": "false",
+    "private": false,
     "version": "0.0.1",
     "description": "A typescript interface for the open tarot ecosystem.",
     "main": "dist/index.js",
