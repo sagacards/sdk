@@ -1,6 +1,7 @@
 {
     "name": "@opentarot/react",
     "version": "0.0.1",
+    "private": "false",
     "description": "Prebuilt queries for react apps covering the open tarot ecosystem.",
     "main": "dist/index.js",
     "scripts": {
