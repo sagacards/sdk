@@ -80,7 +80,11 @@ export const fetchStatsCacheConf: CacheConf = {
  * @param canister canister id as string
  */
 export async function fetchRegistry(canister: string) {
-    return ext(canister).getRegistry();
+    return (await ext(canister).getRegistry()).map(entry => ({
+        canister,
+        token: entry[0],
+        owner: entry[1],
+    }));
 }
 export const fetchRegistryCacheConf: CacheConf = {
     cacheTime: 24 * 60 * 60_000,

@@ -83,14 +83,20 @@ export function useSupply(canister: string) {
     };
 }
 
+export function useRegistry(canister: string) {
+    return useQuery(
+        `${canister}-registry`,
+        () => fetchRegistry(canister),
+        fetchRegistryCacheConf
+    );
+}
+
 /**
  * Query to determine canisters with unminted supply.
  * @returns map of canister ids to remaining supply and collection data
  */
 export function useUnminted() {
-    // Retrieve all tarot NFT canisters.
     const { data: canisters } = useDirectory();
-
     const supply = useSupplyAll();
 
     // Retrieve registries for all canisters.
@@ -100,7 +106,7 @@ export function useUnminted() {
             queryFn: async () => ({
                 id: c.principal,
                 canister: c,
-                registry: await fetchRegistry,
+                registry: await fetchRegistry(c.principal),
                 supply: supply?.data?.[c.principal],
             }),
             ...fetchRegistryCacheConf,

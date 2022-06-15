@@ -1,6 +1,17 @@
 import { Principal } from '@dfinity/principal';
-import { fetchLikeCount, fetchLikes, likesCacheConf } from '@opentarot/core';
-import { useQuery } from 'react-query';
+import {
+    fetchLikeCount,
+    fetchLikes,
+    like,
+    likesCacheConf,
+    unlike,
+} from '@opentarot/core';
+import { useMutation, useQuery } from 'react-query';
+import { queryClient } from '../provider';
+
+////////////
+// Query //
+//////////
 
 /**
  * Query whether a token is liked by a principal.
@@ -48,4 +59,37 @@ export function useLikeCount(canister: Principal, index: number) {
         error: query.error,
         query,
     };
+}
+
+/////////////
+// Mutate //
+///////////
+
+interface LikeRequest {
+    canister: string;
+    index: number;
+}
+
+/**
+ * Returns handler to unlike a token.
+ */
+export function useUnlike() {
+    return useMutation<void, void, LikeRequest, unknown>({
+        mutationFn: ({ canister, index }) => unlike({ canister, index }),
+        onSuccess(data, { canister }: LikeRequest) {
+            queryClient.invalidateQueries(`listings-${canister}`);
+        },
+    });
+}
+
+/**
+ * Returns handler to like a token.
+ */
+export function useLike() {
+    return useMutation<void, void, LikeRequest, unknown>({
+        mutationFn: ({ canister, index }) => like({ canister, index }),
+        onSuccess(data, { canister }: LikeRequest) {
+            queryClient.invalidateQueries(`listings-${canister}`);
+        },
+    });
 }

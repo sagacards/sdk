@@ -11,5 +11,9 @@
     },
     "exclude": ["**/src/**/*.test.ts"],
     "include": ["env.d.ts"],
-    "references": [{ "path": "packages/core" }, { "path": "packages/react" }]
+    "references": [
+        { "path": "packages/core" },
+        { "path": "packages/react" },
+        { "path": "packages/connect" }
+    ]
 }

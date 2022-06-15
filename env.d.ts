@@ -1,6 +1,8 @@
 import { ActorSubclass } from '@dfinity/agent';
 import { IDL } from '@dfinity/candid';
 
+declare module 'ic-stoic-identity';
+
 // This is the stuff that plug wallet extension stuffs into the global window namespace.
 // I stole this for Norton: https://github.com/FloorLamp/cubic/blob/3b9139b4f2d16bf142bf35f2efb4c29d6f637860/src/ui/components/Buttons/LoginButton.tsx#L59
 declare global {

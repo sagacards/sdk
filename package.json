@@ -1,6 +1,6 @@
 {
     "name": "@opentarot/monorepo",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": true,
     "description": "",
     "main": "index.ts",
@@ -51,5 +51,9 @@
             "packages/core",
             "packages/react"
         ]
+    },
+    "dependencies": {
+        "ic-stoic-identity": "^2.0.0",
+        "jotai": "^1.7.2"
     }
 }

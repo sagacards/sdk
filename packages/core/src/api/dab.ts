@@ -12,6 +12,9 @@ type Entry = Omit<Metadata, 'details' | 'principal_id' | 'frontend'>;
 
 /** Metadata for a tarot NFT collection */
 export interface TarotNftCollection extends Entry {
+    name: string;
+    thumbnail: string;
+    description: string;
     artists: string;
     principal: string;
     isDeck: boolean;
@@ -45,7 +48,7 @@ function mapDabCanister(entry: Metadata): TarotNftCollection {
         // @ts-ignore: TODO improve this
         artists: details.artists.Text,
         // @ts-ignore: TODO improve this
-        isDeck: details?.isDeck?.Text === 'true',
+        isDeck: details?.is_deck?.Text?.toLowerCase() === 'true',
         // @ts-ignore: TODO improve this
         previewImage: driveHack(details?.preview_image.Text),
         // @ts-ignore: TODO improve this
@@ -71,6 +74,6 @@ export const getAllCacheConf: CacheConf = {
 /** Retrieve all tarot deck NFTS.
  * These are guaranteed to be complete decks of tarot card art.
  */
-export function getAllDecks() {
-    return getAll().then(r => r.filter(x => x.isDeck));
+export function filterDecks(list: TarotNftCollection[]) {
+    return list.filter(x => x.isDeck);
 }

@@ -6,3 +6,4 @@ export * from './query/legends';
 export * from './query/likes';
 export * from './query/listings';
 export * from './query/minting';
+export * from './provider';

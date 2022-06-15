@@ -11,6 +11,7 @@ import {
     updateLock,
 } from '@opentarot/core';
 import { useDirectory } from './dab';
+import { queryClient } from '../provider';
 
 /**
  * Determine whether a listing is locked.
@@ -100,10 +101,9 @@ interface MutateListingRequest {
 export function useMutateListing() {
     return useMutation<null, { err: string }, MutateListingRequest, unknown>({
         mutationFn: ({ token, price }) => updateListing(token, price),
-        onSuccess(data, { token, price }: MutateListingRequest) {
+        onSuccess(data, { token }: MutateListingRequest) {
             const { canister } = decodeTokenIdentifier(token);
-            // TODO: handle invalidation
-            // queryClient.invalidateQueries(`listings-${canister}`);
+            queryClient.invalidateQueries(`listings-${canister}`);
         },
         onError(data) {
             throw new Error(`Failed to update listing: ${data.err}`);

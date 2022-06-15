@@ -1,8 +1,8 @@
 {
-    "name": "@opentarot/core",
+    "name": "@opentarot/connect",
     "private": false,
-    "version": "0.0.2",
-    "description": "A typescript interface for the open tarot ecosystem.",
+    "version": "0.0.1",
+    "description": "A simple user authentication library.",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "scripts": {
@@ -28,16 +28,12 @@
     },
     "homepage": "https://github.com/sagacards/opentarot-sdk#readme",
     "peerDependencies": {
-        "@opentarot/react": "^0.0.2",
-        "events": "^3.3.0"
+        "@opentarot/core": "^0.0.1"
     },
     "dependencies": {
-        "@dfinity/agent": "^0.11.3",
-        "@dfinity/candid": "^0.11.3",
         "@dfinity/principal": "^0.11.3",
-        "@psychedelic/cap-js": "^0.0.7",
-        "ictool": "^0.0.6",
-        "luxon": "^2.4.0"
+        "ic-stoic-identity": "^2.0.0",
+        "jotai": "^1.7.2"
     },
     "devDependencies": {
         "@swc/core": "^1.2.165",

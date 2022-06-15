@@ -51,7 +51,7 @@ export const likesCacheConf: CacheConf = {
  * @param token object with canister id and token index
  */
 export function like(token: Token) {
-    likes.like(Principal.fromText(token.canister), BigInt(token.index));
+    return likes.like(Principal.fromText(token.canister), BigInt(token.index));
     // TODO: capture invalidation in hook
     // .then(() => queryClient.invalidateQueries(`likes-${token.canister}`));
 }
@@ -61,7 +61,10 @@ export function like(token: Token) {
  * @param token object with canister id and token index
  */
 export function unlike(token: Token) {
-    likes.unlike(Principal.fromText(token.canister), BigInt(token.index));
+    return likes.unlike(
+        Principal.fromText(token.canister),
+        BigInt(token.index)
+    );
     // TODO: capture invalidation in hook
     // .then(() => queryClient.invalidateQueries(`likes-${token.canister}`));
 }

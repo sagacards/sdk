@@ -1,6 +1,6 @@
 {
     "name": "@opentarot/react",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": false,
     "description": "Prebuilt queries for react apps covering the open tarot ecosystem.",
     "main": "dist/index.js",
@@ -27,19 +27,21 @@
     },
     "homepage": "https://github.com/sagacards/opentarot-sdk#readme",
     "dependencies": {
+        "@dfinity/principal": "^0.11.3",
+        "ictool": "^0.0.6",
         "react": "^18.1.0",
         "react-query": "^3.39.1"
     },
     "peerDependencies": {
-        "@opentarot/core": "^0.0.1"
+        "@opentarot/core": "^0.0.2"
     },
     "devDependencies": {
-        "@types/react": "^18.0.12",
         "@swc/core": "^1.2.165",
         "@swc/helpers": "^0.3.8",
         "@types/jest": "^27.5.2",
         "@types/luxon": "^2.3.2",
         "@types/node": "^17.0.42",
+        "@types/react": "^18.0.12",
         "dotenv": "^16.0.1",
         "envars": "^0.4.0",
         "jest": "^27.5.1",

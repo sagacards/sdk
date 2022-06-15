@@ -18,6 +18,14 @@ import type { Ledger } from '../idl/ledger.did.d';
 import type { LegendsNFT } from '../idl/legends.did.d';
 import type { Likes } from '../idl/likes.did.d';
 
+/** Map of existing actors */
+const actors: {
+    [key: string]: {
+        actor: Agent.ActorSubclass<unknown>;
+        idl: InterfaceFactory;
+    };
+} = {};
+
 /////////////
 // Config //
 ///////////
@@ -25,7 +33,7 @@ import type { Likes } from '../idl/likes.did.d';
 // TODO: Configurable
 const conf = {
     IC_PROTOCOL: 'https',
-    IC_HOST: 'https://ic0.app',
+    IC_HOST: 'ic0.app',
     BAZAAR_CANISTER_ID: 'h7wcp-ayaaa-aaaam-qadqq-cai',
     NNS_CANISTER_ID: 'ryjl3-tyaaa-aaaaa-aaaba-cai',
     LIKES_CANISTER_ID: 'xnx6l-pyaaa-aaaaj-qasxa-cai',
@@ -115,14 +123,6 @@ export const dab = actor<TarotDAB>(canisters.dab, DabIDL);
 // Lib //
 ////////
 
-/** Map of existing actors */
-const actors: {
-    [key: string]: {
-        actor: Agent.ActorSubclass<unknown>;
-        idl: InterfaceFactory;
-    };
-} = {};
-
 /** Get or create a canister
  * @param canisterId string id of the canister
  * @param idl interface factory of the canister
@@ -137,7 +137,7 @@ export function actor<T>(
     recreate = false,
     config?: Agent.ActorConfig
 ): Agent.ActorSubclass<T> {
-    if (recreate || !actors[canisterId].actor) {
+    if (recreate || !actors[canisterId]?.actor) {
         actors[canisterId] = {
             actor: create<T>(canisterId, idl, plug, config),
             idl: idl,
