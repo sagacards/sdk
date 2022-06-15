@@ -48,6 +48,7 @@
     },
     "workspaces": {
         "packages": [
+            "packages/connect",
             "packages/core",
             "packages/react"
         ]
