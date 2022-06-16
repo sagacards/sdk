@@ -1,7 +1,7 @@
 {
     "name": "@opentarot/core",
     "private": false,
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "A typescript interface for the open tarot ecosystem.",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -28,7 +28,7 @@
     },
     "homepage": "https://github.com/sagacards/opentarot-sdk#readme",
     "peerDependencies": {
-        "@opentarot/react": "^0.0.2",
+        "@opentarot/react": "^0.1.0",
         "events": "^3.3.0"
     },
     "dependencies": {

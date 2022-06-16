@@ -1,6 +1,6 @@
 {
     "name": "@opentarot/react",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "private": false,
     "description": "Prebuilt queries for react apps covering the open tarot ecosystem.",
     "main": "dist/index.js",
@@ -33,7 +33,7 @@
         "react-query": "^3.39.1"
     },
     "peerDependencies": {
-        "@opentarot/core": "^0.0.2"
+        "@opentarot/core": "^0.1.0"
     },
     "devDependencies": {
         "@swc/core": "^1.2.165",
