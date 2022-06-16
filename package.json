@@ -6,6 +6,7 @@
     "main": "index.ts",
     "scripts": {
         "build": "npm run build --workspaces --if-present",
+        "watch": "npm run watch --workspaces --if-present",
         "test": "npm run test --workspaces --if-present",
         "lint": "eslint --ext .js,.ts . --fix",
         "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",

@@ -4,9 +4,12 @@
     "private": false,
     "description": "Prebuilt queries for react apps covering the open tarot ecosystem.",
     "main": "dist/index.js",
+    "module": "src/index.ts",
     "scripts": {
         "test": "npx jest",
-        "build": "tsc -b"
+        "clean": "rm -f ./*.tsbuildinfo",
+        "build": "npm run clean && tsc -b",
+        "watch": "npm run clean && tsc -b --watch &"
     },
     "repository": {
         "type": "git",

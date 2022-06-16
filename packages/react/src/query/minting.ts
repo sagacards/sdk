@@ -1,14 +1,12 @@
 import {
-    fetchEvents,
-    fetchEventsCacheConf,
-    fetchSpotsCacheConf,
-    fetchSupplyCacheConf,
-} from '@opentarot/core';
-import {
     MintingEvent,
     fetchSupply,
     fetchSpots,
     fetchEvent,
+    fetchEvents,
+    fetchEventsCacheConf,
+    fetchSpotsCacheConf,
+    fetchSupplyCacheConf,
 } from '@opentarot/core';
 import { useQuery, useQueries } from 'react-query';
 
