@@ -218,7 +218,6 @@ export async function respawnActorsPlug() {
         );
     }
 
-    console.log(actors);
     for (const canisterId in actors) {
         actors[canisterId].actor = await window.ic.plug.createActor({
             canisterId,
@@ -229,7 +228,6 @@ export async function respawnActorsPlug() {
 
 /** Recreate all actors using our standard method. Should be called when Plug is disconnected. */
 export function respawnActorsStandard() {
-    console.log(actors);
     for (const canisterId in actors) {
         actors[canisterId] = actor(canisterId, actors[canisterId].idl);
     }
