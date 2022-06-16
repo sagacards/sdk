@@ -190,6 +190,7 @@ export function useConnect() {
         } catch (e) {
             console.error(e);
         }
+        set(state => ({ ...state, pendingConnection: false }));
     }
 
     return {
