@@ -46,6 +46,7 @@ const canisters: { [key: string]: string } = {
     likes: conf.LIKES_CANISTER_ID as string,
     cycles: conf.CYCLES_CANISTER_ID as string,
     dab: conf.DAB_CANISTER_ID as string,
+    nns: conf.NNS_CANISTER_ID as string,
 };
 
 for (const k in canisters) {
@@ -217,6 +218,7 @@ export async function respawnActorsPlug() {
         );
     }
 
+    console.log(actors);
     for (const canisterId in actors) {
         actors[canisterId].actor = await window.ic.plug.createActor({
             canisterId,
@@ -227,6 +229,7 @@ export async function respawnActorsPlug() {
 
 /** Recreate all actors using our standard method. Should be called when Plug is disconnected. */
 export function respawnActorsStandard() {
+    console.log(actors);
     for (const canisterId in actors) {
         actors[canisterId] = actor(canisterId, actors[canisterId].idl);
     }
