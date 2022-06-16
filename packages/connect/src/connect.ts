@@ -14,7 +14,7 @@ import {
 export type Wallet = 'plug' | 'stoic';
 
 interface ConnectStore {
-    pending: boolean;
+    pendingConnection: boolean;
     connection?: {
         principal: Principal;
         wallet: Wallet;
@@ -22,7 +22,7 @@ interface ConnectStore {
 }
 
 const store = atom<ConnectStore>({
-    pending: false,
+    pendingConnection: false,
 });
 
 export function useConnect() {
@@ -32,22 +32,21 @@ export function useConnect() {
      * Call at the before connection attempt to ensure idempotence.
      * @returns function which must be called after connection attempt
      */
-    async function idempotentConnect() {
-        if (connect.pending) return null;
-        set(state => ({ ...state, pending: true }));
-        return () => set(state => ({ ...state, pending: false }));
+    function idempotentConnect() {
+        if (connect.pendingConnection) return null;
+        set(state => ({ ...state, pendingConnection: true }));
+        return () => set(state => ({ ...state, pendingConnection: false }));
     }
 
     /**
      * Post connection hook.
      */
-    async function postConnect() {
+    function postConnect(wallet: Wallet) {
         // Track connected wallet
-        connect.connection?.wallet &&
-            window.localStorage.setItem('wallet', connect.connection?.wallet);
+        window.localStorage.setItem('wallet', wallet);
 
         // Plug actors workaround.
-        if (connect.connection?.wallet === 'plug') respawnActorsPlug();
+        if (wallet === 'plug') respawnActorsPlug();
     }
 
     /**
@@ -74,7 +73,7 @@ export function useConnect() {
                     },
                 }));
 
-                postConnect();
+                postConnect('stoic');
             })
             .finally(complete);
     }
@@ -93,16 +92,22 @@ export function useConnect() {
             return;
         }
 
-        await window.ic.plug.requestConnect({
-            whitelist: await whitelist(),
-            host,
-        });
+        try {
+            await window.ic.plug.requestConnect({
+                whitelist: await whitelist(),
+                host,
+            });
+        } catch (e) {
+            console.error(e);
+            complete();
+            return;
+        }
         const agent = await window.ic.plug.agent;
         const principal = await agent.getPrincipal();
 
         complete();
         set(state => ({ ...state, connection: { principal, wallet: 'plug' } }));
-        postConnect();
+        postConnect('plug');
     }
 
     /**
@@ -129,6 +134,9 @@ export function useConnect() {
      */
     async function plugReconnect() {
         const plug = window?.ic?.plug;
+        const complete = idempotentConnect();
+        if (complete === null) return;
+
         if (
             (await plug?.isConnected()) &&
             window.localStorage.getItem('wallet') === 'plug'
@@ -148,10 +156,12 @@ export function useConnect() {
                     wallet: 'plug',
                 },
             }));
-            postConnect();
+            postConnect('plug');
 
+            complete();
             return true;
         }
+        complete();
         return false;
     }
 
@@ -183,7 +193,7 @@ export function useConnect() {
     }
 
     return {
-        connection: connect.connection,
+        ...connect,
         connectPlug,
         connectStoic,
         reconnect,
