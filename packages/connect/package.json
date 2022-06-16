@@ -1,7 +1,7 @@
 {
     "name": "@opentarot/connect",
     "private": false,
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A simple user authentication library.",
     "main": "dist/index.js",
     "module": "src/index.ts",
@@ -30,7 +30,7 @@
     },
     "homepage": "https://github.com/sagacards/opentarot-sdk#readme",
     "peerDependencies": {
-        "@opentarot/core": "^0.1.1"
+        "@opentarot/core": "^0.1.2"
     },
     "dependencies": {
         "@dfinity/principal": "^0.11.3",
