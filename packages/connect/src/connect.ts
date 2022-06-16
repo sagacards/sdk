@@ -182,9 +182,9 @@ export function useConnect() {
     /**
      * Detects and restoers existing wallet connections.
      */
-    function reconnect() {
+    async function reconnect() {
         try {
-            plugReconnect().then(r => {
+            await plugReconnect().then(r => {
                 if (!r) stoicReconnect();
             });
         } catch (e) {
